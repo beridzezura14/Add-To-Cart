@@ -113,6 +113,7 @@ body{
 
   transition: .5s;
   z-index: 11;
+  overflow: auto;
 
 }
 .cart__head {
