@@ -201,8 +201,9 @@ body{
 
   }
   .active{
+    position: absolute;
     width: 100% !important;
     height: auto !important;
-
+    overflow: auto;
   }
 }
