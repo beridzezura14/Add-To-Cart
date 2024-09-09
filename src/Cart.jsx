@@ -56,9 +56,10 @@ function Cart() {
         
     ]
 
-
-
-
+    const [searchTerm, setSearchTerm] = useState('');
+    const filteredProducts = product.filter(product =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     
     // const addToCart = (item) =>{
     //     setCart([...cart, item])
@@ -143,9 +144,16 @@ function Cart() {
                         <ion-icon className="icon" name="cart-outline"></ion-icon>
                     </div>
                 </div>
+                <input
+                    className='search'
+                    type="text"
+                    placeholder="Search for a iphone..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
                 <div className="lineup">
                     {
-                        product.map((product) => (
+                        filteredProducts.map((product) => (
                             <div className='lineup__item' key={product.id}>
                                 <img src={product.img} alt="" />
                                 <h2>{product.name}</h2>
