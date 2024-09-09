@@ -51,15 +51,17 @@ function Cart() {
             name: "iPhone 15",
             para: "A total powerhouse.",
             price: 799,
-        },
-        
-        
+        }, 
     ]
 
     const [searchTerm, setSearchTerm] = useState('');
     const filteredProducts = product.filter(product =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+    const clearSearch = (e) => {
+        e.preventDefault();
+        setSearchTerm('')
+    }
     
     // const addToCart = (item) =>{
     //     setCart([...cart, item])
@@ -144,13 +146,16 @@ function Cart() {
                         <ion-icon className="icon" name="cart-outline"></ion-icon>
                     </div>
                 </div>
-                <input
-                    className='search'
-                    type="text"
-                    placeholder="Search for a iphone..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
+                <form>
+                    <input
+                        className='search'
+                        type="text"
+                        placeholder="Search for a iphone..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <button onClick={clearSearch} className='cencel-btn'> &times; </button>
+                </form>
                 <div className="lineup">
                     {
                         filteredProducts.map((product) => (
