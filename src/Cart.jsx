@@ -106,7 +106,7 @@ function Cart() {
           if (existingProduct.quantity > 1) {
             return prevCart.map(item =>
               item.name === product.name
-                ? { ...item, quantity: item.quantity - 1 }
+                ? { ...item, quantity: item.quantity - 1  }
                 : item
             );
           } else {
@@ -114,6 +114,11 @@ function Cart() {
           }
         });
     };
+    const removeFromCartAll = (product) => {
+        setCart((prevCart) => prevCart.filter(item => item.id !== product.id));
+
+    };
+
 
     const getTotal = () =>{
         return cart.reduce((total, item) => total + item.price * item.quantity, 0)
@@ -181,7 +186,7 @@ function Cart() {
                                                 <p>{item.quantity}</p>
                                                 <button className='q__btn' onClick={() => addToCart(item)}>+</button>
                                             </div>
-                                            <button className='cart__btn' onClick={() => removeFromCart(item)}>&#10005;</button>
+                                            <button className='cart__btn' onClick={() => removeFromCartAll(item)}>&#10005;</button>
                                         </div>
                                     )))
                                 }
